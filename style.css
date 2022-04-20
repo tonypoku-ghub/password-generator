@@ -1,7 +1,11 @@
+
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+
+  --modal-bg-color: #b17965;
 }
 
 html,
@@ -134,4 +138,91 @@ button[disabled] {
   .btn {
     font-size: 0.8rem;
   }
+}
+
+
+/* Additional styling */
+.criteria_section {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-flow: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 5px 0;
+  padding: 1px 0 0 5px;
+}
+
+.criteria_label {
+  flex: 1 1 50%;
+  /* margin: 0 40px 0 0; */
+}
+
+.criteria_sel {
+  flex: 1 1 50%;
+  /* margin: 0 40px 0 0; */
+}
+
+
+/* Toggle between flex and none */
+.password_length{
+  display: none;
+  background-color: yellow;
+  width: 50%;
+}
+
+/* Toggle between flex and block */
+.all_criteria {
+  display: none;
+  background-color: var(--modal-bg-color);
+  width: 50%;
+  border-radius: 15px;
+  padding: 5px;
+}
+
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  flex-direction: column;  /* make it a flex box*/
+  justify-content: center;
+  align-items: center;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.save{
+  display: flex;
+  justify-content: flex-end;
+}
+
+#save-criteria{
+  line-height: 8px;
+  font-size: 16px;
+  margin: 0px 5px 5px 0px;
+  padding: 14px 34px;
+}
+
+hr {
+  border: none;
+  border-top: 3px double #333;
+  color: #333;
+  overflow: visible;
+  text-align: center;
+  height: 5px;
+  margin: 25px 0 0 0;
+}
+
+hr:after {
+  background: var(--modal-bg-color);
+  content: 'character type';
+  padding: 4px;
+  position: relative;
+  top: -13px;
 }
