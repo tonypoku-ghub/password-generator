@@ -5,7 +5,7 @@
 *::after {
   box-sizing: border-box;
 
-  --modal-bg-color: #b17965;
+  --modal-bg-color: #eed8d0;
 }
 
 html,
@@ -165,14 +165,14 @@ button[disabled] {
 
 /* Toggle between flex and none */
 .password_length{
-  display: none;
+  display: flex;
   background-color: yellow;
   width: 50%;
 }
 
 /* Toggle between flex and block */
 .all_criteria {
-  display: none;
+  display: block;
   background-color: var(--modal-bg-color);
   width: 50%;
   border-radius: 15px;
@@ -225,4 +225,21 @@ hr:after {
   padding: 4px;
   position: relative;
   top: -13px;
+}
+
+/* The Close Button */
+.close {
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-end;
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
