@@ -123,7 +123,7 @@ button[disabled] {
 }
 
 @media (max-width: 690px) {
-  .btn {
+  .btn .modal{
     font-size: 1rem;
     margin: 16px 0px 0px 0px;
     padding: 10px 15px;
@@ -132,11 +132,20 @@ button[disabled] {
   #password {
     font-size: 1rem;
   }
+
+  label {
+    display: none;
+  }
 }
 
 @media (max-width: 500px) {
-  .btn {
+  .btn .modal{
     font-size: 0.8rem;
+  }
+
+  /* Hide label when screen is small */
+  label {
+    display: none;
   }
 }
 
@@ -152,22 +161,9 @@ button[disabled] {
   padding: 1px 0 0 5px;
 }
 
-.criteria_label {
+/* Control spacing of criteria fields */
+.criteria_label, .criteria_sel {
   flex: 1 1 50%;
-  /* margin: 0 40px 0 0; */
-}
-
-.criteria_sel {
-  flex: 1 1 50%;
-  /* margin: 0 40px 0 0; */
-}
-
-
-/* Toggle between flex and none */
-.password_length{
-  display: flex;
-  background-color: yellow;
-  width: 50%;
 }
 
 /* Toggle between flex and block */

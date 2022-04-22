@@ -3,15 +3,19 @@ var generateBtn = document.querySelector("#generate");
 
 var saveBtn = document.querySelector("#save-criteria");
 
+// Used to x out of the modal
 var closeBtn = document.querySelector("#close");
 
+// Prompts the user for password criteria
 var modal = document.querySelector(".modal");
 
 // Add event listener to generate and save buttons
 generateBtn.addEventListener("click", openModal);
 
+// Add event listener to save user selection
 saveBtn.addEventListener("click", saveCriteria);
 
+// Add event listener to close the modal
 closeBtn.addEventListener("click", closeModal);
 
 // Write password to the #password input
@@ -22,7 +26,7 @@ function writePassword() {
   passwordText.value = password;
 }
 
-// Save the user criteria to an object
+// Save the user criteria to an pwd_options object
 function saveCriteria() {
   var pwd_length_dom = document.querySelector("#pwd_length");
   pwd_options.pwd_length =
@@ -40,13 +44,17 @@ function saveCriteria() {
   var symbol_dom = document.querySelector("#symbol");
   pwd_options.symbol = symbol_dom.checked;
 
+  // Print selection to console log
   pwd_options.print();
 
-  //validate character type selection
+  // Validate character type selection. Must select at least one text criteria
+  // No need to validate password length, since a dropdown is used to limit choices
   if (!pwd_options.isCharTypeSelected()) {
     alert("At least one character type should be selected");
 
+    //Keep modal open if validation fails
     openModal();
+
     return;
   }
 
@@ -62,6 +70,7 @@ pwd_options = {
   numeric: false,
   symbols: false,
   print: function () {
+    // Friendly print function for debugging
     console.log("pwd_length = " + pwd_options.pwd_length);
     console.log("lowercase = " + pwd_options.lowercase);
     console.log("uppercase = " + pwd_options.uppercase);
@@ -69,11 +78,13 @@ pwd_options = {
     console.log("symbol = " + pwd_options.symbol);
   },
   randomChar: function (chars) {
+    // Generate random char from a given string of chars
     var result = chars.charAt(Math.floor(Math.random() * chars.length));
 
     return result;
   },
   isCharTypeSelected: function () {
+    // Validates selection of character type
     return this.lowercase || this.uppercase || this.numeric || this.symbol;
   },
 };
@@ -86,6 +97,7 @@ function generatePassword() {
   var symbolList = "~!@#$%^&*()_-+={[}]|:;<,>.?/";
 
   var password;
+
   for (var password = ""; password.length < pwd_options.pwd_length; ) {
     if (pwd_options.lowercase) {
       password += pwd_options.randomChar(lowercaseList);
@@ -107,11 +119,12 @@ function generatePassword() {
   return password;
 }
 
-// When the user clicks on <span> (x), close the modal
+// Close the modal
 function closeModal() {
   modal.style.display = "none";
 }
 
+// Open the modal
 function openModal() {
   modal.style.display = "flex";
 }
